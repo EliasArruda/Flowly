@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tw:build": "tailwindcss -i ./Flowly.Shared/styles/tailwind.css -o ./Flowly/wwwroot/css/app.css --watch --minify"
+    "tw:build": "tailwindcss -i ./Flowly.Shared/Styles/tailwind.css -o ./Flowly/wwwroot/css/app.css --watch --minify"
   },
   "keywords": [],
   "author": "",
