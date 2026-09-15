@@ -23,6 +23,9 @@ public partial class Container
     public ContainerSize Size { get; set; } = default;
 
     [Parameter]
+    public ContainerPadding Padding { get; set; } = default;
+
+    [Parameter]
     public string? Class { get; set; }
 
     private string SizeClass => Size switch
@@ -31,6 +34,15 @@ public partial class Container
         ContainerSize.Medium => "max-w-5xl",
         ContainerSize.Large => "max-w-7xl",
         ContainerSize.Full => "max-w-none",
+        _ => string.Empty
+    };
+
+    private string PaddingClass => Padding switch
+    {
+        ContainerPadding.Small => "p-2",
+        ContainerPadding.Medium => "p-4",
+        ContainerPadding.Large => "p-6",
+        ContainerPadding.ExtraLarge => "p-8",
         _ => string.Empty
     };
 
@@ -92,6 +104,14 @@ public partial class Container
         Full
     }
 
+    public enum ContainerPadding
+    {
+        Small,
+        Medium,
+        Large,
+        ExtraLarge
+    }
+
     private const string BaseCss = "flex w-full";
-    private string Css => $"{BaseCss} {AlignClass} {DirectionClass} {GapClass} {SizeClass} {Class}";
+    private string Css => $"{BaseCss} {AlignClass} {DirectionClass} {GapClass} {SizeClass} {PaddingClass} {Class}";
 }
