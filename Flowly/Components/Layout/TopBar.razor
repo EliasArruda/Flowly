@@ -1,12 +1,20 @@
+@using Flowly.Shared.Components.Button
 @using Flowly.Shared.Components.Container
 @using Flowly.Shared.Components.Stack
 @using Flowly.Shared.Components.Text
 
 <Container Padding="Container.ContainerPadding.Medium" Size="Container.ContainerSize.Full"
            Direction="Container.ContainerDirection.Row" Class="border-b-2 border-border">
+
     <Stack Align="Stack.StackAlign.Center" Direction="Stack.StackDirection.Row" Justify="Stack.StackJustify.Between">
         <Text As="h1" Variant="Text.TextVariant.Heading" Color="Text.TextColor.Primary" Font="Text.TextFont.Serif"
               Weight="Text.TextWeight.Bold" Tracking="Text.TextTracking.Wider">Flowly</Text>
+
+        <Button PositionBorder="Button.ButtonPositionBorder.Bottom" Size="Button.ButtonSize.Small"
+                BorderColor="Button.ButtonColor.Primary" FontSize="Button.ButtonFontSize.Medium"
+                TextColor="Button.ButtonColor.Muted" TextWeight="Button.ButtonTextWeight.Medium">
+            Home
+        </Button>
     </Stack>
     <Stack></Stack>
 </Container>

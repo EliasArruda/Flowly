@@ -1,1 +1,34 @@
-<button>@ChildContent</button>
+@using Microsoft.AspNetCore.Components.Routing
+
+@if (!string.IsNullOrWhiteSpace(Href))
+{
+    <NavLink href="@Href" Match="NavLinkMatch.All" class="@Css">
+        @if (Icon is not null && IconPosition is ButtonIconPosition.Left)
+        {
+            <Blazicon Svg="@Icon" />
+        }
+
+        @ChildContent
+
+        @if (Icon is not null && IconPosition is ButtonIconPosition.Right)
+        {
+            <Blazicon Svg="@Icon" />
+        }
+    </NavLink>
+}
+else
+{
+    <button class="@Css">
+        @if (Icon is not null && IconPosition is ButtonIconPosition.Left)
+        {
+            <Blazicon Svg="@Icon" />
+        }
+
+        @ChildContent
+
+        @if (Icon is not null && IconPosition is ButtonIconPosition.Right)
+        {
+            <Blazicon Svg="@Icon" />
+        }
+    </button>
+}
