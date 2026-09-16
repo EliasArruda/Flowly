@@ -1,21 +1,32 @@
 @using Flowly.Shared.Components.Button
 @using Flowly.Shared.Components.Container
+@using Flowly.Shared.Components.Logo
 @using Flowly.Shared.Components.Stack
-@using Flowly.Shared.Components.Text
+<Container
+    Padding="Container.ContainerPadding.Medium"
+    Size="Container.ContainerSize.Full"
+    Direction="Container.ContainerDirection.Row"
+    Class="border-b-2 border-border">
+    <Stack
+        Size="Stack.StackSize.Full"
+        Align="Stack.StackAlign.Center"
+        Direction="Stack.StackDirection.Row"
+        Justify="Stack.StackJustify.Between">
+        <Logo Size="Logo.LogoSize.Large" />
 
-<Container Padding="Container.ContainerPadding.Medium" Size="Container.ContainerSize.Full"
-           Direction="Container.ContainerDirection.Row" Class="border-b-2 border-border">
-
-    <Stack Size="Stack.StackSize.Full" Align="Stack.StackAlign.Center" Direction="Stack.StackDirection.Row"
-           Justify="Stack.StackJustify.Between">
-        <Text As="h1" Variant="Text.TextVariant.Heading" Color="Text.TextColor.Primary" Font="Text.TextFont.Serif"
-              Weight="Text.TextWeight.Bold" Tracking="Text.TextTracking.Wider">Flowly</Text>
-
-        <Stack As="nav" Direction="Stack.StackDirection.Row" Align="Stack.StackAlign.Center" Gap="Stack.StackGap.Small">
+        <Stack
+            As="nav"
+            Direction="Stack.StackDirection.Row"
+            Align="Stack.StackAlign.Center"
+            Gap="Stack.StackGap.Small">
             @foreach (var link in links)
             {
-                <Button Href="@link.Href" Size="Button.ButtonSize.Small" FontSize="Button.ButtonFontSize.Medium"
-                        TextColor="Button.ButtonColor.Muted" TextWeight="Button.ButtonTextWeight.Medium">
+                <Button
+                    Href="@link.Href"
+                    Size="Button.ButtonSize.Small"
+                    FontSize="Button.ButtonFontSize.Medium"
+                    TextColor="Button.ButtonColor.Muted"
+                    TextWeight="Button.ButtonTextWeight.Medium">
                     @link.Name
                 </Button>
             }
@@ -25,13 +36,12 @@
     </Stack>
 </Container>
 
-
 @code
 {
     private record LinkModel(
-        string Name,
-        string Href
-    );
+                    string Name,
+                    string Href
+                );
 
     private readonly IEnumerable<LinkModel> links = [
         new("Home", "/"),

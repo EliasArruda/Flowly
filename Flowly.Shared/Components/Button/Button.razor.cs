@@ -15,6 +15,9 @@ public partial class Button
     public SvgIcon? Icon { get; set; }
 
     [Parameter]
+    public string? Class { get; set; }
+
+    [Parameter]
     public ButtonIconPosition IconPosition { get; set; }
 
     [Parameter]
@@ -36,6 +39,9 @@ public partial class Button
     public ButtonColor TextColor { get; set; }
 
     [Parameter]
+    public ButtonGap Gap { get; set; }
+
+    [Parameter]
     public ButtonVariant Variant { get; set; }
 
     private string VariantClass => Variant switch
@@ -44,6 +50,14 @@ public partial class Button
         ButtonVariant.Secondary => "bg-secondary hover:bg-secondary-hover text-muted-foreground",
         ButtonVariant.Outline => "border border-border text-foreground/70",
         ButtonVariant.Ghost => "text-muted-foreground hover:bg-surface-hover hover:text-primary/55",
+        _ => string.Empty
+    };
+
+    private string ButtonGapClass => Gap switch
+    {
+        ButtonGap.Small => "gap-2",
+        ButtonGap.Medium => "gap-4",
+        ButtonGap.Large => "gap-6",
         _ => string.Empty
     };
 
@@ -105,7 +119,7 @@ public partial class Button
     private readonly string ActiveClassStyle = "border-b-2 border-primary";
 
     private string Css =>
-        $"{BaseCss} {VariantClass} {ButtonSizeClass} {PositionBorderClass} {TextWeightClass} {ButtonFontSizeClass} {ButtonBorderColorClass} {ButtonTextColorClass}";
+        $"{BaseCss} {VariantClass} {ButtonSizeClass} {PositionBorderClass} {TextWeightClass} {ButtonFontSizeClass} {ButtonBorderColorClass} {ButtonTextColorClass} {ButtonGapClass} {Class}".Trim();
 
     public enum ButtonVariant
     {
@@ -152,6 +166,14 @@ public partial class Button
     }
 
     public enum ButtonSize
+    {
+        None,
+        Small,
+        Medium,
+        Large
+    }
+
+    public enum ButtonGap
     {
         None,
         Small,

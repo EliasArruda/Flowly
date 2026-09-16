@@ -1,0 +1,35 @@
+@using Flowly.Shared.Components.Text
+<Text
+    As="h1"
+    Variant="@LogoSizeClass"
+    Color="Text.TextColor.Primary"
+    Font="Text.TextFont.Serif"
+    Weight="Text.TextWeight.Bold"
+    Tracking="Text.TextTracking.Wider">
+    Flowly
+</Text>
+
+@code
+{
+    [Parameter]
+    public LogoSize Size { get; set; }
+
+    private Text.TextVariant LogoSizeClass => Size switch
+    {
+        LogoSize.ExtraSmall => Text.TextVariant.BodySmall,
+        LogoSize.Small => Text.TextVariant.Body,
+        LogoSize.Medium => Text.TextVariant.BodyLarge,
+        LogoSize.Large => Text.TextVariant.Subheading,
+        LogoSize.ExtraLarge => Text.TextVariant.Heading,
+        _ => Text.TextVariant.None
+    };
+
+    public enum LogoSize
+    {
+        ExtraSmall,
+        Small,
+        Medium,
+        Large,
+        ExtraLarge
+    }
+}

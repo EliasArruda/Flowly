@@ -136,6 +136,7 @@ public class Text : ComponentBase
 
     public enum TextVariant
     {
+        None,
         Display,
         Title,
         Heading,

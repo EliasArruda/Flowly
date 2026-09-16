@@ -12,6 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazicons.Bootstrap" Version="4.0.5" />
+    <PackageReference Include="Blazicons.Devicon" Version="3.0.13" />
     <PackageReference Include="Blazicons.Lucide" Version="3.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.12" />
   </ItemGroup>

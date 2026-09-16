@@ -15,10 +15,10 @@ public class Stack : ComponentBase
     public StackDirection Direction { get; set; } = StackDirection.Column;
 
     [Parameter]
-    public StackAlign Align { get; set; } = StackAlign.Start;
+    public StackAlign Align { get; set; } = StackAlign.None;
 
     [Parameter]
-    public StackJustify Justify { get; set; } = StackJustify.Start;
+    public StackJustify Justify { get; set; } = StackJustify.None;
 
     [Parameter]
     public StackGap Gap { get; set; } = StackGap.None;
@@ -102,12 +102,14 @@ public class Stack : ComponentBase
 
     public enum StackDirection
     {
+        None,
         Row,
         Column
     }
 
     public enum StackAlign
     {
+        None,
         Start,
         Center,
         End,
@@ -116,6 +118,7 @@ public class Stack : ComponentBase
 
     public enum StackJustify
     {
+        None,
         Start,
         Center,
         End,

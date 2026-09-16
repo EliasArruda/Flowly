@@ -1,0 +1,91 @@
+@using Blazicons
+@using Flowly.Shared.Components.Button
+@using Flowly.Shared.Components.Container
+@using Flowly.Shared.Components.Logo
+@using Flowly.Shared.Components.Stack
+@using Flowly.Shared.Components.Text
+@using Microsoft.AspNetCore.Components.Authorization
+<Container
+    Size="Container.ContainerSize.Full"
+    Align="Container.ContainerAlign.CenterPage"
+    Direction="Container.ContainerDirection.Row"
+    Class="p-64">
+    <Stack
+        Direction="Stack.StackDirection.Row"
+        Size="Stack.StackSize.Full"
+        Class="border border-primary rounded-lg">
+        <Stack
+            Direction="Stack.StackDirection.Column"
+            Size="Stack.StackSize.Full"
+            Gap="Stack.StackGap.Large"
+            Class="flex-1 p-8 bg-white shadow rounded-lg">
+            <Stack
+                Direction="Stack.StackDirection.Row"
+                Align="Stack.StackAlign.Center"
+                Size="Stack.StackSize.Full"
+                Justify="Stack.StackJustify.Between">
+                <Logo Size="Logo.LogoSize.Medium" />
+
+                <Button
+                    Href="/"
+                    TextWeight="Button.ButtonTextWeight.Medium"
+                    FontSize="Button.ButtonFontSize.Small"
+                    TextColor="Button.ButtonColor.Muted"
+                    Icon="Lucide.ArrowLeft"
+                    IconPosition="Button.ButtonIconPosition.Left"
+                    Gap="Button.ButtonGap.Small">
+                    Back to home
+                </Button>
+            </Stack>
+
+            <Stack Direction="Stack.StackDirection.Column">
+                <Text
+                    Variant="Text.TextVariant.Heading"
+                    Weight="Text.TextWeight.SemiBold"
+                    Font="Text.TextFont.Serif">
+                    Join Flowly.
+                </Text>
+
+                <Text
+                    Variant="Text.TextVariant.BodySmall"
+                    Tracking="Text.TextTracking.Wide"
+                    Weight="Text.TextWeight.Medium"
+                    Font="Text.TextFont.Serif"
+                    Class="text-muted-foreground/70">
+                    Build your technology feed around the topics you
+                    care about.
+                </Text>
+            </Stack>
+
+            <Stack Direction="Stack.StackDirection.Column" Gap="Stack.StackGap.Small">
+                <Button
+                    Class="bg-black text-white rounded-md font-mono tracking-wider"
+                    Icon="BootstrapIcon.Github"
+                    Gap="Button.ButtonGap.Medium"
+                    Size="Button.ButtonSize.Large"
+                    TextWeight="Button.ButtonTextWeight.Medium"
+                    FontSize="Button.ButtonFontSize.Medium"
+                    IconPosition="Button.ButtonIconPosition.Left">
+                    Continue with GitHub
+                </Button>
+
+                <Button
+                    Class="border border-border bg-white text-muted rounded-md font-mono tracking-wider"
+                    Icon="DeviconOriginal.Google"
+                    Gap="Button.ButtonGap.Medium"
+                    Size="Button.ButtonSize.Large"
+                    TextWeight="Button.ButtonTextWeight.Medium"
+                    FontSize="Button.ButtonFontSize.Medium"
+                    TextColor="Button.ButtonColor.Muted"
+                    IconPosition="Button.ButtonIconPosition.Left">
+                    Continue with Google
+                </Button>
+            </Stack>
+        </Stack>
+
+        <Stack
+            Direction="Stack.StackDirection.Column"
+            Align="Stack.StackAlign.Center"
+            Class="flex-1"></Stack>
+    </Stack>
+</Container>
