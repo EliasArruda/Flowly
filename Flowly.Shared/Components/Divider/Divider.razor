@@ -1,0 +1,25 @@
+<div class="@ContainerCss">
+    <div class="@LineCss"></div>
+    @if (!string.IsNullOrWhiteSpace(Text))
+    {
+        <span class="@TextCss">
+        @Text
+        </span>
+    }
+    <div class="@LineCss"></div>
+</div>
+
+@code
+{
+    [Parameter]
+    public string Text { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Class { get; set; } = string.Empty;
+
+    private const string LineCss = "h-px flex-1 bg-border";
+
+    private string ContainerCss => $"flex items-center w-full gap-2.5 {Class}";
+
+    private const string TextCss = "text-xs font-light tracking-wider text-muted-foreground whitespace-nowrap font-serif";
+}
