@@ -6,15 +6,37 @@
 <Container Padding="Container.ContainerPadding.Medium" Size="Container.ContainerSize.Full"
            Direction="Container.ContainerDirection.Row" Class="border-b-2 border-border">
 
-    <Stack Align="Stack.StackAlign.Center" Direction="Stack.StackDirection.Row" Justify="Stack.StackJustify.Between">
+    <Stack Size="Stack.StackSize.Full" Align="Stack.StackAlign.Center" Direction="Stack.StackDirection.Row"
+           Justify="Stack.StackJustify.Between">
         <Text As="h1" Variant="Text.TextVariant.Heading" Color="Text.TextColor.Primary" Font="Text.TextFont.Serif"
               Weight="Text.TextWeight.Bold" Tracking="Text.TextTracking.Wider">Flowly</Text>
 
-        <Button PositionBorder="Button.ButtonPositionBorder.Bottom" Size="Button.ButtonSize.Small"
-                BorderColor="Button.ButtonColor.Primary" FontSize="Button.ButtonFontSize.Medium"
-                TextColor="Button.ButtonColor.Muted" TextWeight="Button.ButtonTextWeight.Medium">
-            Home
-        </Button>
+        <Stack As="nav" Direction="Stack.StackDirection.Row" Align="Stack.StackAlign.Center" Gap="Stack.StackGap.Small">
+            @foreach (var link in links)
+            {
+                <Button Href="@link.Href" Size="Button.ButtonSize.Small" FontSize="Button.ButtonFontSize.Medium"
+                        TextColor="Button.ButtonColor.Muted" TextWeight="Button.ButtonTextWeight.Medium">
+                    @link.Name
+                </Button>
+            }
+        </Stack>
+
+        <Stack></Stack>
     </Stack>
-    <Stack></Stack>
 </Container>
+
+
+@code
+{
+    private record LinkModel(
+        string Name,
+        string Href
+    );
+
+    private readonly IEnumerable<LinkModel> links = [
+        new("Home", "/"),
+        new("Explore", "/explore"),
+        new("Topics", "/topics"),
+        new("Community", "/community"),
+    ];
+}

@@ -102,6 +102,8 @@ public partial class Button
     private const string BaseCss =
         "inline-flex items-center justify-center font-serif";
 
+    private readonly string ActiveClassStyle = "border-b-2 border-primary";
+
     private string Css =>
         $"{BaseCss} {VariantClass} {ButtonSizeClass} {PositionBorderClass} {TextWeightClass} {ButtonFontSizeClass} {ButtonBorderColorClass} {ButtonTextColorClass}";
 

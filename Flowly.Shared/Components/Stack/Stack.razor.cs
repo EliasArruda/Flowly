@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Flowly.Shared.Components.Stack;
 
-public partial class Stack
+public class Stack : ComponentBase
 {
+    [Parameter]
+    public string As { get; set; } = "div";
+
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
@@ -20,6 +24,9 @@ public partial class Stack
     public StackGap Gap { get; set; } = StackGap.None;
 
     [Parameter]
+    public StackSize Size { get; set; } = StackSize.None;
+
+    [Parameter]
     public bool Wrap { get; set; }
 
     [Parameter]
@@ -27,8 +34,6 @@ public partial class Stack
 
     [Parameter(CaptureUnmatchedValues = true)]
     public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
-
-    private const string BaseCss = "flex";
 
     private string DirectionClass => Direction switch
     {
@@ -66,12 +71,34 @@ public partial class Stack
         _ => string.Empty
     };
 
+    private string SizeClass => Size switch
+    {
+        StackSize.Small => "max-w-sm",
+        StackSize.Medium => "max-w-3xl",
+        StackSize.Large => "max-w-5xl",
+        StackSize.ExtraLarge => "max-w-7xl",
+        StackSize.Full => "w-full",
+        _ => string.Empty
+    };
+
     private string WrapClass => Wrap
         ? "flex-wrap"
         : string.Empty;
 
     private string Css =>
-        $"{BaseCss} {DirectionClass} {AlignClass} {JustifyClass} {GapClass} {WrapClass} {Class}";
+        $"flex {DirectionClass} {AlignClass} {JustifyClass} {GapClass} {SizeClass} {WrapClass} {Class}".Trim();
+
+    protected override void BuildRenderTree(RenderTreeBuilder builder)
+    {
+        builder.OpenElement(0, As);
+        builder.AddAttribute(1, "class", Css);
+
+        if (AdditionalAttributes is not null)
+            builder.AddMultipleAttributes(2, AdditionalAttributes);
+
+        builder.AddContent(3, ChildContent);
+        builder.CloseElement();
+    }
 
     public enum StackDirection
     {
@@ -104,5 +131,15 @@ public partial class Stack
         Medium,
         Large,
         ExtraLarge
+    }
+
+    public enum StackSize
+    {
+        None,
+        Small,
+        Medium,
+        Large,
+        ExtraLarge,
+        Full
     }
 }

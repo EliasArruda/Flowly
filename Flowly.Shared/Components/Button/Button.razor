@@ -2,7 +2,7 @@
 
 @if (!string.IsNullOrWhiteSpace(Href))
 {
-    <NavLink href="@Href" Match="NavLinkMatch.All" class="@Css">
+    <NavLink href="@Href" ActiveClass="@ActiveClassStyle" Match="NavLinkMatch.All" class="@Css">
         @if (Icon is not null && IconPosition is ButtonIconPosition.Left)
         {
             <Blazicon Svg="@Icon" />
