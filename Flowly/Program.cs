@@ -1,11 +1,13 @@
 using Flowly.Components;
+using Flowly.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
+builder.Services.AddEntityExtension(builder.Configuration);
 
 var app = builder.Build();
 

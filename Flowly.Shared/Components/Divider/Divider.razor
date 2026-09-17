@@ -17,9 +17,14 @@
     [Parameter]
     public string Class { get; set; } = string.Empty;
 
+    [Parameter]
+    public bool UpperCase { get; set; }
+
     private const string LineCss = "h-px flex-1 bg-border";
 
-    private string ContainerCss => $"flex items-center w-full gap-2.5 {Class}";
+    private string UpperCaseCss => UpperCase ? "uppercase" : string.Empty;
+
+    private string ContainerCss => $"flex items-center w-full gap-2.5 {UpperCaseCss} {Class}";
 
     private const string TextCss = "text-xs font-light tracking-wider text-muted-foreground whitespace-nowrap font-serif";
 }

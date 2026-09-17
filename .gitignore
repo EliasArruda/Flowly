@@ -412,6 +412,7 @@ FodyWeavers.xsd
 
 
 # globs
+Makefile
 Makefile.in
 *.userprefs
 *.usertasks
