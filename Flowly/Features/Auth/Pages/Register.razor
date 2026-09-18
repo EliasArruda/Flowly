@@ -1,5 +1,49 @@
 @page "/register"
+@inject IAuthService AuthService
 @layout AuthLayout
+@using Blazicons
+@using Flowly.Features.Auth.Components
 @using Flowly.Features.Auth.Components.Template
+@using Flowly.Features.Auth.DTOs
+@using Flowly.Shared.Components.Button
+@using Flowly.Shared.Components.Input
+<AuthTemplate>
+    <FormComponent Dto="RequestDto" FormName="RegisterForm">
+        <Input
+            type="text"
+            Label="Full Name"
+            placeholder="John Doe"
+            @bind-Value="RequestDto.FullName" />
 
-<AuthTemplate />
+        <ValidationMessage For="() => RequestDto.FullName" />
+
+        <Input
+            type="email"
+            Label="Email"
+            placeholder="name@example.com"
+            @bind-Value="RequestDto.Email" />
+
+        <Input
+            type="password"
+            Label="Password"
+            placeholder="••••••••"
+            @bind-Value="RequestDto.Password" />
+
+        <Button
+            type="submit"
+            TextWeight="Button.ButtonTextWeight.Bold"
+            Variant="Button.ButtonVariant.Primary"
+            Size="Button.ButtonSize.Large"
+            Icon="Lucide.ArrowRight"
+            IconPosition="Button.ButtonIconPosition.Right"
+            Gap="Button.ButtonGap.Small"
+            Class="font-serif tracking-wide rounded-sm hover:cursor-pointer">
+            Create Account
+        </Button>
+    </FormComponent>
+</AuthTemplate>
+
+@code
+{
+    private CreateRequestDto RequestDto { get; set; } = new();
+}

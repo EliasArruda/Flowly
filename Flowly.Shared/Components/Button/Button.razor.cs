@@ -8,6 +8,9 @@ public partial class Button
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
     [Parameter]
     public string? Href { get; set; }
 

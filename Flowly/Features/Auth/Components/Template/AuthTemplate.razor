@@ -5,12 +5,11 @@
 @using Flowly.Shared.Components.Logo
 @using Flowly.Shared.Components.Stack
 @using Flowly.Shared.Components.Text
-@using Microsoft.AspNetCore.Components.Authorization
 <Container
     Size="Container.ContainerSize.Full"
     Align="Container.ContainerAlign.CenterPage"
     Direction="Container.ContainerDirection.Row"
-    Class="p-64">
+    Class="px-64">
     <Stack
         Direction="Stack.StackDirection.Row"
         Size="Stack.StackSize.Full"
@@ -84,6 +83,7 @@
             </Stack>
 
             <Divider Text="OR REGISTER WITH WORK OR PERSONAL EMAIL" UpperCase />
+            @ChildContent<Divider />
         </Stack>
 
         <Stack
@@ -92,3 +92,9 @@
             Class="flex-1"></Stack>
     </Stack>
 </Container>
+
+@code
+{
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

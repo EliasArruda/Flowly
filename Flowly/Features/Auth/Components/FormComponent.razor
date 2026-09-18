@@ -1,0 +1,32 @@
+<EditForm
+    Model="Dto"
+    FormName="FormName"
+    OnValidSubmit="ValidSubmit"
+    class="flex flex-col gap-4">
+    <DataAnnotationsValidator />
+    @ChildContent
+</EditForm>
+
+@code
+{
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public EventCallback<EditContext> ValidSubmit { get; set; }
+
+    [Parameter]
+    public object? Dto { get; set; }
+
+    [Parameter]
+    public string FormName { get; set; } = string.Empty;
+
+    [Parameter]
+    public TypeForm Type { get; set; } = TypeForm.Register;
+
+    public enum TypeForm
+    {
+        Register,
+        Login
+    }
+}
